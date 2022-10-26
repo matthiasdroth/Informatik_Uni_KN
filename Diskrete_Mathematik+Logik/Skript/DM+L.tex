@@ -1,0 +1,161 @@
+% HEAD
+% Pakete laden:
+\documentclass[12pt]{book}													% Schriftgroesse, Dokumenttyp
+\usepackage[ngerman]{babel}													% neue Deutsche Rechtschreibung und Umlaute
+\usepackage{fix-cm}															% ordentlich trennen
+\usepackage[top=3cm, bottom=3cm, left=2.5cm,right=2.5cm]{geometry}					% Seitenränder formatieren
+\usepackage{graphicx}														% .jpg, .pdf und andere Bildformate darstellen
+\usepackage{float}															% Bilder hier und nirgends sonst
+\usepackage{color}															% Farbe ( \textcolor{black, white, red, green, yellow, blue}{"`text"'} )
+\usepackage{ulsy}															% Blitz: \blitza, \blitzb, ..., \blitze
+\usepackage{enumerate}														% Listen: (i),(ii),... oder (a),(b),... usw. \begin{enumerate}[{(i)}]
+\usepackage{amstext,amsfonts,amsopn,amsmath,amssymb,amsthm,mathrsfs,bbold}		% Mathematik
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}									% Zapf-Alphabet
+\usepackage[pdftex,hypertexnames=false,pdfpagemode=UseThumbs,					% UseOutlines, UseThumbs, FullScreen, UseNone
+linkbordercolor={1 1 1}, citebordercolor={1 1 1},pdfstartview=FitH]{hyperref}				% Fit, FitB, FitH
+% Eigene Befehle:
+\newcommand{\n}{\nonumber}
+\newcommand{\nn}{\nonumber\\}
+\newcommand{\R}{\,\Rightarrow\,}
+\newcommand{\pp}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\bma}{\begin{eqnarray}}
+\newcommand{\ema}{\end{eqnarray}\hspace{-0.015cm}}
+\newcommand{\Def}{_{\text{def}}}
+% Deutsche Anführungszeichen:
+%\documentclass{article}
+%\usepackage[ngerman]{babel}
+
+\let\oldquote'
+\newif\ifquoteopen
+\catcode`\'=\active
+\makeatletter
+% we have to redefine \pr@m@s to use an active '
+\def\pr@m@s{%
+  \ifx'\@let@token
+    \expandafter\pr@@@s
+  \else
+    \ifx^\@let@token
+      \expandafter\expandafter\expandafter\pr@@@t
+    \else
+      \egroup
+    \fi
+  \fi}
+\protected\def'{%
+  \ifmmode
+    \expandafter\active@math@prime
+  \else
+    \expandafter\active@text@prime
+  \fi}
+\def\active@text@prime{%
+   \@ifnextchar'{%
+     \ifquoteopen
+       \global\quoteopenfalse\grqq\expandafter\@gobble
+     \else
+       \global\quoteopentrue\glqq\expandafter\@gobble
+     \fi
+   }{\oldquote}%
+}
+\makeatother
+
+
+% BODY
+\begin{document}
+% Titelseite
+\thispagestyle{empty}
+\setlength{\parindent}{0pt}
+\vspace{2.5cm}
+{\bf \fontsize{36}{36} \selectfont {Diskrete Mathematik und }}\\[5mm]
+{\bf \fontsize{36}{36} \selectfont {Logik}}\\[1cm]
+{\fontsize{14}{18} \selectfont  {Universität Konstanz, Wintersemester 2022/23}}\\[1cm]
+{\fontsize{18}{22} \selectfont  {Dozent: Prof.\ Dr.\ Sven Kosub}}\\[.5cm]
+{\fontsize{18}{22} \selectfont  {Ausarbeitung: Dr.\ Matthias Droth}}\\[.5cm]
+\newpage
+% Inhaltverzeichnis
+\thispagestyle{empty}
+%\addtocounter{chapter}{-1}
+\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{3}
+\numberwithin{equation}{chapter} 
+\tableofcontents
+% Zeilenumbruch
+\setlength{\parindent}{0.0cm}			% Einrückung der ersten Zeile eines neuen Absatzes
+\parskip=0.3cm						% Leerzeile im TeX-Code wird auch als Leerzeile ausgegeben
+% Start %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Mathematische Grundlagen}
+%
+\section{Zuweisung}
+\begin{itemize}
+\item Zuweisung als Standardform (linke Seite wird durch rechte Seite definiert):
+\bma
+x=\Def y\quad\text{oder}\quad X:=y\,.
+\ema
+$\Rightarrow$ ''$x$'' ist der Name für $y$.
+\item $x$ und $y$ dürfen beliebig vertauscht werden.
+\end{itemize}
+Beispiele:
+\begin{enumerate}
+\item $x=\Def2$,
+\item $x=\Def 2n+1$,
+\item $f(x)=\Def 2n+1$,
+\item $p|q\Leftrightarrow\Def\,\exists k:\,q=k\cdot p$ (es gibt ein $k$ mit $q=k\cdot p$).
+\end{enumerate}
+Beachte: ''$x=y$'' \textbf{behauptet} eine Gleichheit $\Rightarrow$ Beweis nötig!
+%
+\section{Iteration}
+\begin{itemize}
+\item Definitionsform zum Ausdrücken von Wiederholungen in Variablen, aber mit bestimmten Grenzen:
+\bma
+\sum_{k=1}^na_k=\Def a_1+a_2+a_3+\ldots+a_n\,,\quad\prod_{k=1}^na_k=a_1\cdot a_2\cdot\ldots\cdot a_n\,.
+\ema
+Beispiel: $n!=\Def\prod_{k=1}^nk\,$.
+\item Typisches Problem: Finde werggleichen Ausdruck onhe die Laufvariable $k$.\\Besipiel: $\sum_{k=1}^nk=\frac{n\cdot(n+1)}{2}$. 
+\end{itemize}
+%
+\section{Rekursion}
+\begin{itemize}
+\item Definitionsform, bei der die definierte Seite auf der definierenden Seite vorkommen darf: $x=\Def \ldots x\ldots$.
+\item Um unendliche Schachtelungen auszuschließen werden Abbruchbedingungen festgelegt. Ein paar Beispiele:
+\begin{enumerate}
+\item $n!=\Def n\cdot(n-1)!$ für $n\geq1$ und $0!=\Def1$.
+\item $\text{Euklid}(m,\,n)=\Def\left\{
+	\begin{array}{ll}
+		\text{Euklid }(\text{mod}$(n,\,m),\,m)$ & \text{falls $m\nmid n$,}\\
+		m & \text{falls } m|n.
+	\end{array}
+\right.$
+\item Fibonacci Reihe: $F_n=\Def F_{n-1}+F_{n-2}$ für $n\geq2$ und mit $F_0=\Def0,\, F_1=\Def1$.
+\bma
+\Rightarrow F_5&=&F_4+F_3\nn
+&=&(F_3+F_2)+(F_2+F_1)\nn
+&=&((F_2+F_1)+(F_1+F_0))+((F_1+F_0)+F_1)\nn
+&=&(((F_1+F_0)+F_1)+(F_1+F_0))+((F_1+F_0)+F_1)\nn
+&=&5F_1+3F_0=5\cdot1+3\cdot0=5\,.
+\ema
+\bf{Merke}: \rm{Rekursionen werden ausgewertet, indem sie in Iterationen umgewandelt werden.}
+\item Ackermann Funktion (auf natürlichen Zahlen $x,\,y$):
+\bma
+A(0,\,y)&=\Def&y+1\,,\nn
+A(x,\,0)&=\Def&x\,,\nn
+A(x,\,y)&=\Def&A\left(x-1,\, A(x,\,y-1)\right)\,,\quad\text{für $x\geq1$, $y\geq1$.}
+\ema
+\end{enumerate}
+\end{itemize}
+% Finish %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Literatur
+\newpage
+\begin{thebibliography}{}
+\bibitem{Baym}
+G. Baym, \emph{Lectures on Quantum Mechanics} (Addison Wesley, 1993).
+\bibitem{FS2}
+F. Schwabl, \emph{Quantenmechanik} und \emph{Quantenmechanik f\"ur Fortgeschrittene} (Springer, 2007 und 2005).
+\bibitem{Nol}
+W. Nolting, \emph{Grundkurs Theoretische Physik}, B\"ande 4, 5/2 und 7 (Springer, 2005, 2006 und 2005).
+\bibitem{Mesh2}
+A. Messiah, \emph{Quantenmechanik 2} (de Gruyter, 1990).
+\bibitem{BF}
+H. Bruus and K. Flensberg, \emph{Many-Body Quantum Theory in Condensed Matter Physics: An Introduction} (Oxford, 2004).
+\end{thebibliography}
+
+\end{document}
