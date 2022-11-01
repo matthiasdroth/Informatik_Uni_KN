@@ -7,3 +7,4 @@
 - https://github.com/CompVis
 - https://discord.com/channels/879548962464493619/897387888663232554
 - https://linkedin.com/learning/gans-and-diffusion-models-in-machine-learning/overview-of-generative-models
+- https://www.linkedin.com/feed/update/urn:li:activity:6993325058983129088/

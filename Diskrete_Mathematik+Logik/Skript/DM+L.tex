@@ -9,7 +9,7 @@
 \usepackage{color}															% Farbe ( \textcolor{black, white, red, green, yellow, blue}{"`text"'} )
 \usepackage{ulsy}															% Blitz: \blitza, \blitzb, ..., \blitze
 \usepackage{enumerate}														% Listen: (i),(ii),... oder (a),(b),... usw. \begin{enumerate}[{(i)}]
-\usepackage{amstext,amsfonts,amsopn,amsmath,amssymb,amsthm,mathrsfs,bbold}		% Mathematik
+\usepackage{amstext,amsfonts,amsopn,amsmath,amssymb,amsthm,mathrsfs,bbold,mathdots}		% Mathematik
 \DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}									% Zapf-Alphabet
 \usepackage[pdftex,hypertexnames=false,pdfpagemode=UseThumbs,					% UseOutlines, UseThumbs, FullScreen, UseNone
 linkbordercolor={1 1 1}, citebordercolor={1 1 1},pdfstartview=FitH]{hyperref}				% Fit, FitB, FitH
@@ -108,7 +108,7 @@ Beachte: ''$x=y$'' \textbf{behauptet} eine Gleichheit $\Rightarrow$ Beweis nöti
 \sum_{k=1}^na_k=\Def a_1+a_2+a_3+\ldots+a_n\,,\quad\prod_{k=1}^na_k=a_1\cdot a_2\cdot\ldots\cdot a_n\,.
 \ema
 Beispiel: $n!=\Def\prod_{k=1}^nk\,$.
-\item Typisches Problem: Finde werggleichen Ausdruck onhe die Laufvariable $k$.\\Besipiel: $\sum_{k=1}^nk=\frac{n\cdot(n+1)}{2}$. 
+\item Typisches Problem: Finde wertgleichen Ausdruck onhe die Laufvariable $k$.\\Besipiel: $\sum_{k=1}^nk=\frac{n\cdot(n+1)}{2}$. 
 \end{itemize}
 %
 \section{Rekursion}
@@ -138,8 +138,94 @@ A(0,\,y)&=\Def&y+1\,,\nn
 A(x,\,0)&=\Def&x\,,\nn
 A(x,\,y)&=\Def&A\left(x-1,\, A(x,\,y-1)\right)\,,\quad\text{für $x\geq1$, $y\geq1$.}
 \ema
+% 27.10.2022
+\item Typische Probleme: Terminierung, Auflösung ($n$-te Fibonacci-Zahl) und Abschätzung bei rekursiven Definitionen.
+\end{enumerate}
+%\\
+Beispiele: 
+\end{itemize}
+\begin{enumerate}
+\item $\left(\frac{n}{2}\right)^{\frac{n}{2}}\leq n!\leq n^2$
+%\item $F_n=\frac{1}{\sqrt{5}\left\[\left(\frac{1+\sqrt{5}}{2}\right)^n-\left(\frac{1-\sqrt{5}}{2}\right)^n\right\]$
+\item Ackermann-Funktion:
+\bma
+A(5, y)&\geq&2^{\text{
+	$\overbrace{
+		\begin{smallmatrix}
+			&&2\\
+			&\iddots&\\
+			2&&\\
+			&&
+		\end{smallmatrix}
+	}^{y\text{-mal}}$
+}}\nn
+A(5,2)&\geq&2^2=4\nn
+A(5,3)&\geq&2^{2^2}=2^4=16\nn
+A(5,4)&\geq&2^{2^{2^2}}=2^{16}=65536\nn
+A(5,5)&\geq&2^{2^{2^{2^2}}}=2^{65536}\approx 10^19660\n
+\ema
+Die Ackermann Funktion ist nicht mit einer for-Schleife berechenbar.
+\end{enumerate}
+%
+\section{Strukturierte Induktion}
+\begin{itemize}
+\item Beim rekursiven Definieren geht es ums {\bf Zerlegen} und beim induktiven Definieren geht es ums {\bf Zusammensetzen}.
+\item Tpyisch für Konstruktionen von Mengen.
+\item Form:
+\begin{enumerate}
+\item (IA) Festlegen der Basiselemente.
+\item (IS) Festlegen der Operationen zur Konstruktion neuer Elemente aus bestehenden Elementen.
+\item Nichts sonst ist ein Element dieser Menge.
 \end{enumerate}
 \end{itemize}
+Beispele:
+\begin{enumerate}
+\item Natürliche Zahlen:
+\begin{itemize}
+\item $0$ ist eine natürliche Zahl.
+\item Ist $n$ eine natürliche Zahl, so ist $n{+}1$ auch eine natürliche Zahl.
+\item Nichts sonst ist eine natürliche Zahl.
+\end{itemize}
+\item Korrekte Klammerausdrücke
+\begin{enumerate}
+\item $(\,)$ ist ein korrekter Klammerausdruck.
+\item Sind $H_1$, $H_2$ korrekte Klammerausdrücke, so sind $(H_1)$ und $H_1H_2$ korrekte Klammerausdrücke.
+\item Nichts sonst ist ein korrekter Klammerausdruck.
+\end{enumerate}
+Beispiel: ''$(\underbrace{(())()}_{
+	\underset{\underset{()}{\downarrow}}{(())}
+	\,
+	()
+})$'' ist ein korrekter Klammerausdruck, ''$)($'' ist kein korrekter Klammerausdruck.
+Fallbeispiel: Suchbäume
+\end{enumerate}
+\begin{itemize}
+\item Datenstruktur zur Suche in geordneten Mengen
+\item wollen wisse, ob $1, 2, 3, 5, 7, 11, 13, 17, 19$ eine Zahl $a$ enthält.
+\item Die kombinatorische Struktur: volle, gewurzelte Binärbäume.
+\item voller, gewurzelter Binärbaum $T$ besteht aus Konten $(0,\,\square)$ und Verweise $(\rightarrow)$. Ein Knoten $r$ ist die Wurzel.\\
+(IA) Für jedes $r$ ist der KNoten $r$ ein Baum, $\square$\\
+(IS) Soind $T_1,\,T_2$ Bäume mit Wurzeln $r_1,\,r_2$ und keinen gemeinsamen Knoten, so ist die Kollektion der Knoten und Kanten aus $T_1$ und $T_2$ sowie den neuen Kanten $r\rightarrow r_1$, $r\rightarrow r_2$ für $r\neq r_1,\,r_2$ ein Baum; $r$ ist die neuer Wurzel.\\
+Nichts sonst ist ein voller, gewurzelter Binärbaum.\\
+Beispiel:
+XXX image2 XXX
+\item Wollen die induktive Struktur der Bäume benutzen, um Sachverhalte zu beweisen.
+\item Knoten ohne ausgehende Kantne heißt \emph{Blatt}, sonst heißt der Knoten \emph{innerer Knoten}.
+\end{itemize}
+\underline{Proposition}\\
+Für einen vollen, gewurzelten Binärbaum $T$ seien $n_T$ die Anzahl der inneren Knoten und $m_T$ die Anzahl der Blätter. Dann gilt stets $nT=m_T-1$.\\\\
+Beweis (induktion über Aufbau der Bäume):
+
+(IA) Ist $T$ ein Baum mit einem Knoten $\tau$, so gilt $m_{\tau}=1,\,n_{\tau}=0$.\\
+(IS) Es sei $T$ ein Baum mit mehr als einem Knoten, mit Wurzel $r$. Dann gibt es Bäume $T_1,\,T_2$ mit Wurzeln $\tau_1,\,\tau_2$, aus denen $T$ zusammengesetzt ist.\\
+Insbesondere:Blätter bzw. innere Knoten von $\tau_1,\,\tau_2$ sind auch Blätter bzw. innere Knoten von $T$. Die Wurzel $r$ ist ein innerer Knoten von $T$.\\
+Es gilt:
+\bma
+n_T&=&n_{T_1}+n_{T_2}+1\nn
+&=&(m_{T_1}-1)+(m_{T_2}-1)+1\nn
+&=&(m_{T_1}+m_{T_2})-1\nn
+&=&m_T-1\,.
+\ema
 % Finish %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
