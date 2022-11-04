@@ -1,0 +1,151 @@
+\documentclass[]{article}
+\usepackage{amstext,amsfonts,amsopn,amsmath,amssymb,amsthm,mathrsfs,bbold}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{ulem}
+\usepackage[top=1.5cm, bottom=2cm, left=2.2cm,right=2.2cm]{geometry}
+\usepackage{url}
+\parskip=5mm
+\parindent=0mm
+% <Eigene Befehle>
+\newcommand{\n}{\nonumber}
+\newcommand{\nn}{\nonumber\\}
+\newcommand{\R}{\,\Rightarrow\,}
+\newcommand{\pp}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\bma}{\begin{eqnarray}}
+\newcommand{\ema}{\end{eqnarray}\hspace{-0.015cm}}
+\newcommand{\Def}{_{\text{def}}}
+% </Eigene Befehle>
+\begin{document}
+{\Large\bf Diskrete Mathematik und Logik -- Lösung Blatt 1}\\%[+0.2cm]
+\url{https://nlp.seas.harvard.edu/2018/04/03/attention.html}\\[+0.5cm]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{\bf\underline{Aufgabe 1:} Modulare Arithmetik}\\[-0.8cm]
+\begin{list}{}{}
+\item[a)]
+Bestimmen Sie $\text{mod}(41,\,13)$.
+\item[b)]
+Bestimmen Sie $\text{mod}(-18,\,13)$.
+\item[c)]
+Bestimmen Sie die kleinste natürliche Zahl $k>0$ mit $\text{mod}(4^k,\,13)=1$.
+\item[d)]
+Bestimmen Sie $\text{mod}(4^{111},\,13)$.
+\item[e)]
+Bestimmen Sie $\text{mod}(4^{57}\cdot17^{113},\,13)$.
+\end{list}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{\bf Lösung}\\[-0.8cm]
+\begin{list}{}{}
+\item[a)]
+$\text{mod}(41,\,13)=\text{mod}(3\cdot13+2,\,13)=2$.
+\item[b)]
+$\text{mod}(-18,\,13)=\text{mod}(-2\cdot13+8,\,13)=8$.
+\item[c)]
+Die Lösung ist $k=6$, denn $4^6=4096=4095+1=(13\cdot315)+1$.
+\item[d)]
+$4^{111}$ ergibt 6739986666787659948666753771754907668409286105635143120275902562304, wie jeder weiß.\footnote{Zumindest wer einen Computer hat.} Damit ist der Rest klar: das Ergebnis ist 12.
+\item[e)]
+3
+\end{list}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{\bf\underline{Aufgabe 2:} Induktion}\\[+0.3cm]
+Zeigen Sie mit vollständiger Induktion über $n$ folgende Aussagen:\\[-0.8cm]
+\begin{list}{}{}
+\item[a)]
+$\sum_{k=0}^n(2k{+}1)^2=\frac{(2n+1)(2n+2)(2n+3)}{6}$ für alle natürlichen Zahlen $n$.
+\item[b)]
+$\sum_{k=0}^n\frac{k}{(k+1)!}=\frac{(n+1)!-1}{(n+1)!}$ für alle natürlichen Zahlen $n$.
+\item[c)]
+$\prod_{k=2}^n\left(1-\frac{1}{k}\right)=\frac{1}{n}$ für alle natürlichen Zahlen $n\geq2$.
+\item[d)]
+Für alle natürlichen Zahlen $n$ ist $n^3-n$ durch 6 teilbar.
+\item[e)]
+Für alle natürlichen Zahlen $n$ ist $2^{3n}+13$ durch 7 teilbar.
+\end{list}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{\bf Lösung}
+\begin{list}{}{}
+\item[a)]
+Induktionsanfang ($n=0$):
+\bma
+n=0\quad\Rightarrow\quad\sum_{k=0}^{n=0}(2k+1)^2=\frac{(2\cdot0+1)(2\cdot0+2)(2\cdot0+3)}{6}=\frac{(2n+1)(2n+2)(2n+3)}{6}=1\,.\quad\checkmark
+\ema
+Induktionsschritt ($n{-}1\rightarrow n$):
+\bma
+\sum_{k=0}^n(2k+1)^2&=&\left(\sum_{k=0}^{n-1}(2k+1)^2\right)+(2n+1)^2\nn
+&=&\frac{2n\cdot2(n+1)\cdot2(n+2)}{6}+\frac{6(2n+1)^2}{6}\nn
+&=&\frac{8n^3+24n^2+22n+6}{6}\nn
+&=&\frac{(2n+1)(2n+2)(2n+3)}{6}\,.\qquad\square
+\ema
+\item[b)]
+Induktionsanfang ($n=0$):
+\bma
+n=0\quad\Rightarrow\sum_{k=0}^{n=0}\frac{k}{(k+1)!}=\frac{0}{1!}=0=\frac{(n+1)!-1}{(n+1)!}\,.\quad\checkmark
+\ema
+Induktionsschritt ($n{-}1\rightarrow n$):
+\bma
+\sum_{k=0}^n\frac{k}{(k+1)!}&=&\left(\sum_{k=0}^{n-1}\frac{k}{(k+1)!}\right)+\frac{n}{(n+1)!}\nn
+&=&\frac{n!-1}{n!}+\frac{n}{(n+1)!}\nn
+&=&\frac{(n!-1)(n+1)+n}{(n+1)!}\nn
+&=&\frac{(n+1)!-1}{(n+1)!}\,.\qquad\square
+\ema
+\item[c)]
+Induktionsanfang ($n=2$):
+\bma
+\prod_{k=2}^2\left(1-\frac{1}{k}\right)=1-\frac{1}{2}=\frac{1}{2}=\frac{1}{n}\,.\quad\checkmark
+\ema
+Induktionsschritt ($n{-}1\rightarrow n$):
+\bma
+\prod_{k=2}^n\left(1-\frac{1}{k}\right)&=&\left(\prod_{k=2}^{n-1}1-\frac{1}{k}\right)\left(1-\frac{1}{n}\right)\nn
+&=&\frac{1}{n-1}\cdot\left(1-\frac{1}{n}\right)=\frac{1}{n-1}\cdot\frac{n-1}{n}=\frac{1}{n}\,.\qquad\square
+\ema
+\item[d)]
+Induktionsanfang ($n=0$):
+\bma
+\frac{n^3-n}{6}=\frac{0}{6}=0\in\mathbb{N}_0\,.\quad\checkmark
+\ema
+Induktionsschritt ($n{-}1\rightarrow n$):
+\bma
+\frac{\left((n-1)+1\right)^3-\left((n-1)+1\right)}{6}=\frac{n^3-n}{6}\,.\qquad\square
+\ema
+\item[e)]
+Induktionsanfang ($n=0$):
+\bma
+\frac{2^{3n}+13}{7}=\frac{2^0+13}{7}=\frac{14}{7}=2\in\mathbb{N}_0\,.\quad\checkmark
+\ema
+Induktionsschritt ($n{-}1\rightarrow n$):
+\bma
+\frac{2^{3n}+13}{7}=\frac{2^{3(n-1)+3}+13}{7}=\frac{8\cdot2^{3n-1}+13}{7}=\ldots?
+\ema
+\end{list}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{\bf\underline{Aufgabe 3:} Ackermann-Funktion}\\[+0.3cm]
+Die Ackermann-Funktion $A(x,\,y)$ sei für natürliche Zahlen $x,\,y$ wie folgt rekursiv definiert:
+\bma
+A(0,\,y)&=\Def&y+1\nn
+A(x,\,0)&=\Def&x\quad\text{falls $x\geq1$}\nn
+A(x,\,y)&=\Def&A(x-1,\,A(x,\,y-1))\quad\text{falls $x\geq1$, $y\geq1$}
+\ema
+Zeigen Sie mittels vollständiger Induktion über $n$, dass für alle natürlichen Zahlen $n,\,y$ die folgenden Aussagen gelten:
+\begin{list}{}{}
+\item[a)]
+$A(2,\,n)=n+2$.
+\item[b)]
+$A(3,\,n)=2n+3$.
+\item[c)]
+$A(4,\,n)=7\cdot2^n-3$.
+\item[d)]
+$y<A(n,\,y)$.
+\item[e)]
+$A(n,\,y)<A(n+1,\,y)$.
+\end{list}
+\textit{Hinweis}: Benutzen Sie für jede Teilaufgabe die in der vorangegangenen Teilaufgabe bewiesene Aussage. Es gilt $A(1,\,n)=n+1$ (siehe Skriptum \textit{Diskrete Mathematik und Logik}).\\[+0.5cm]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{\bf Lösung}\\[+0.3cm]
+With $L_x^2+L_y^2=L^2-L_z^2$, the crystal field operator reads
+\begin{eqnarray}
+\mathcal{H}=(a-b)L_z^2+b\,L^2\,.\nonumber
+\end{eqnarray}
+Its eigenfunctions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
