@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.9.9)  4 NOV 2022 23:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.9.9)  5 NOV 2022 00:34
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -271,34 +271,34 @@ e
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 24.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 21.
 
 (/usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 24.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 21.
 
 
 (/usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 24
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 21
 .
 
 (/usr/local/texlive/2021/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-Underfull \hbox (badness 10000) in paragraph at lines 20--25
+Underfull \hbox (badness 10000) in paragraph at lines 20--26
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 38--39
+Underfull \hbox (badness 10000) in paragraph at lines 39--40
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 52--54
+Underfull \hbox (badness 10000) in paragraph at lines 53--55
 
  []
 
@@ -306,18 +306,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 52--54
 
 {/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Trying to load font information for U+bbold on input line 1
-06.
+07.
 
 (/usr/local/texlive/2021/texmf-dist/tex/latex/bbold/Ubbold.fd) [2] [3]
 (./Lösung1_DM+L_2022.aux) ) 
 Here is how much of TeX's memory you used:
- 3611 strings out of 478994
- 47743 string characters out of 5858185
+ 3614 strings out of 478994
+ 47773 string characters out of 5858185
  363270 words of memory out of 5000000
- 21046 multiletter control sequences out of 15000+600000
- 410979 words of font info for 60 fonts, out of 8000000 for 9000
+ 21048 multiletter control sequences out of 15000+600000
+ 411147 words of font info for 61 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 68i,14n,74p,473b,218s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 68i,14n,74p,473b,264s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2021/texmf-dist/fonts/type1/pu
 blic/bbold-type1/bbold10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/pu
 blic/bbold-type1/bbold7.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/pub
@@ -335,12 +335,13 @@ cmr7.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
 .pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.p
 fb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb
 ></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.
-pfb>
-Output written on Lösung1_DM+L_2022.pdf (3 pages, 168433 bytes).
+</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><
+/usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.p
+fb>
+Output written on Lösung1_DM+L_2022.pdf (3 pages, 180510 bytes).
 PDF statistics:
- 86 PDF objects out of 1000 (max. 8388607)
- 62 compressed objects within 1 object stream
+ 90 PDF objects out of 1000 (max. 8388607)
+ 65 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
