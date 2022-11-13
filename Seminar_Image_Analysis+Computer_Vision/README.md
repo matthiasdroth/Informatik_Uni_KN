@@ -16,10 +16,11 @@
 
 - Diffusers
 
-  - https://lilianweng.github.io/posts/2021-07-11-diffusion-models
-  - https://www.assemblyai.com/blog/diffusion-models-for-machine-learning-introduction
   - https://linkedin.com/learning/gans-and-diffusion-models-in-machine-learning/overview-of-generative-models
+  - https://www.assemblyai.com/blog/diffusion-models-for-machine-learning-introduction
+  - https://lilianweng.github.io/posts/2021-07-11-diffusion-models
   - https://paperswithcode.com/paper/denoising-diffusion-probabilistic-models
+  - https://huggingface.co/blog/annotated-diffusion
   - https://huggingface.co/docs/diffusers/index
   - https://github.com/huggingface/diffusers
   - https://discord.com/channels/879548962464493619/897387888663232554
