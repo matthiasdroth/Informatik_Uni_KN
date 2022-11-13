@@ -35,6 +35,7 @@
   - https://jalammar.github.io/illustrated-stable-diffusion/
   - https://stability.ai/blog/stable-diffusion-public-release
   - https://huggingface.co/CompVis/stable-diffusion
+  - https://huggingface.co/spaces/stabilityai/stable-diffusion
   - https://en.wikipedia.org/wiki/Stable_Diffusion
   - https://colab.research.google.com/drive/1jrKblK4iISeilrCasc02G8JAd8Z3G45h?usp=sharing#scrollTo=H7qo-6AWFbLH
 
