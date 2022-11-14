@@ -19,6 +19,7 @@
   - https://linkedin.com/learning/gans-and-diffusion-models-in-machine-learning/overview-of-generative-models
   - https://www.assemblyai.com/blog/diffusion-models-for-machine-learning-introduction
   - https://lilianweng.github.io/posts/2021-07-11-diffusion-models
+  - https://hojonathanho.github.io/diffusion
   - https://paperswithcode.com/paper/denoising-diffusion-probabilistic-models
   - https://huggingface.co/blog/annotated-diffusion
   - https://huggingface.co/docs/diffusers/index
